@@ -76,10 +76,10 @@ int main()
 {
     // Crear y inicializar arreglo de 5 libros
     Book books[5];
-    books[0].setBookDetails("Cien años de soledad", "Gabriel García Márquez", "978-0307474728");
+    books[0].setBookDetails("Cien anos de soledad", "Gabriel Garcia Marquez", "978-0307474728");
     books[1].setBookDetails("Don Quijote de la Mancha", "Miguel de Cervantes", "978-8491050278");
-    books[2].setBookDetails("La sombra del viento", "Carlos Ruiz Zafón", "978-8408163385");
-    books[3].setBookDetails("El amor en los tiempos del cólera", "Gabriel García Márquez", "978-0307389732");
+    books[2].setBookDetails("La sombra del viento", "Carlos Ruiz Zafon", "978-8408163385");
+    books[3].setBookDetails("El amor en los tiempos del colera", "Gabriel Garcia Marquez", "978-0307389732");
     books[4].setBookDetails("Ficciones", "Jorge Luis Borges", "978-0142437478");
 
     while (true) {
