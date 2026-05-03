@@ -1,56 +1,44 @@
-// Book.cpp
-// Implementación de los métodos de la clase Book definidos en Book.h.
-
 #include "Book.h"
-#include <iostream>
 
-// Constructor por defecto
-Book::Book()
-    : title{}, author{}, isbn{}, availability{true}
-{
+Book::Book() {
+    title = "";
+    author = "";
+    isbn = "";
+    available = true;
 }
 
-// setBookDetails: versión con 3 parámetros
-void Book::setBookDetails(const std::string& title, const std::string& author, const std::string& isbn)
-{
-    // Delegar a la versión de 4 parámetros usando disponibilidad por defecto = true
-    setBookDetails(title, author, isbn, true);
+void Book::setBookDetails(const std::string& t, const std::string& a, const std::string& i, bool avail) {
+    title = t;
+    author = a;
+    isbn = i;
+    available = avail;
 }
 
-// setBookDetails: versión con 4 parámetros
-void Book::setBookDetails(const std::string& title, const std::string& author, const std::string& isbn, bool available)
-{
-    this->title = title;
-    this->author = author;
-    this->isbn = isbn;
-    this->availability = available;
+void Book::displayBookDetails() const {
+    std::cout << "Título: " << title << "\n";
+    std::cout << "Autor: " << author << "\n";
+    std::cout << "ISBN: " << isbn << "\n";
+    std::cout << "Disponible: " << (available ? "Sí" : "No") << "\n";
 }
 
-std::string Book::getISBN() const
-{
+bool Book::isAvailable() const {
+    return available;
+}
+
+std::string Book::getISBN() const {
     return isbn;
 }
 
-bool Book::isAvailable() const
-{
-    return availability;
-}
-
-void Book::displayBookDetails() const
-{
-    std::cout << "Title: " << title << '\n'
-              << "Author: " << author << '\n'
-              << "ISBN: " << isbn << '\n'
-              << "Availability: " << (availability ? "Available" : "Not available") << '\n';
-}
-
-bool Book::borrowBook()
-{
-    if (!availability) {
-        std::cout << "Cannot borrow. The book is already borrowed.\n";
-        return false;
+void Book::borrowBook() {
+    if (available) {
+        available = false;
+        std::cout << "Libro prestado correctamente.\n";
     }
-    availability = false;
-    std::cout << "Book borrowed successfully.\n";
-    return true;
+    else {
+        std::cout << "El libro ya está prestado.\n";
+    }
+}
+
+void Book::returnBook() {
+    available = true;
 }
